@@ -12,8 +12,8 @@ del version.txt.1
 :FOLDERCHECK
 cls
 if not exist .\bin mkdir .\bin
-if not exist .\doc mkdir .\doc
 if not exist .\dll mkdir .\dll
+if not exist .\doc mkdir .\doc
 
 :VERSION
 cls
