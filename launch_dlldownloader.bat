@@ -2,24 +2,26 @@
 setlocal enabledelayedexpansion
 Color 0A
 cls
-title PORTABLE dlldownloader LAUNCHER
+title PORTABLE DLLDOWNLOADER LAUNCHER
 set nag=BE SURE TO TURN CAPS LOCK OFF! (never said it was on just make sure)
 set new_version=OFFLINE
 if exist replacer.bat del replacer.bat
-del version.txt
-del version.txt.1
+if exist checkupdate.txt goto version
 
 :FOLDERCHECK
 cls
-if not exist .\bin mkdir .\bin
-if not exist .\dll mkdir .\dll
-if not exist .\doc mkdir .\doc
+if not exist .\bin\ mkdir .\bin\
+if not exist .\dll\ mkdir .\dll\
+if not exist .\doc\ mkdir .\doc\
+call :VERSION
+goto CREDITS
 
 :VERSION
 cls
-echo 1 > .\doc\version.txt
+echo 2 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
+exit /b
 
 :CREDITS
 cls
@@ -111,6 +113,9 @@ echo 4. delete dll folder
 echo 5. update downloader
 echo 6. about downloader
 echo 7. exit
+echo.
+echo b. download other projects
+echo.
 set /p choice="enter a number and press enter to confirm: "
 if "%choice%"=="1" goto NEW
 if "%choice%"=="2" goto DEFAULT
@@ -119,22 +124,26 @@ if "%choice%"=="4" goto DELETE
 if "%choice%"=="5" goto UPDATECHECK
 if "%choice%"=="6" goto ABOUT
 if "%choice%"=="7" exit
+if "%CHOICE%"=="b" goto PORTABLEEVERYTHING
 set nag="PLEASE SELECT A CHOICE 1-6"
 goto MENU
 
 :GET_DLLS
 set Counter=0
-for /f "DELIMS=" %%i in ('type .\dll.txt') do (
+for /f "DELIMS=" %%i in ('type dll.txt') do (
 	if not exist %%i .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/%%i
     if exist %%i move %%i .\dll\%%i
 )
-if exist .\dll.txt del .\dll.txt
+if exist dll.txt del dll.txt
 exit /b
 
-:NEW
+:NULL
 cls
 set nag="NOT A FEATURE YET!"
 goto MENU
+
+:NEW
+goto NULL
 
 :DEFAULT
 cls
@@ -147,18 +156,17 @@ cls
 if exist dll.txt del dll.txt
 if not exist .\bin\wget.exe call :DOWNLOADWGET
 .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll.txt
+if not exist dll.txt goto ERROROFFLINE
 call :GET_DLLS
 exit /b
 
 :SELECT
-cls
-set nag="NOT A FEATURE YET!"
-goto MENU
+goto NULL
 
 :DELETE
 cls
 title PORTABLE DLLDOWNLOADER LAUNCHER - DELETE DLL
-rmdir /s ".\dll"
+rmdir /s .\dll\
 goto MENU
 
 :UPDATECHECK
@@ -231,6 +239,13 @@ exit
 cls
 del .\doc\dlldownloader_license.txt
 start launch_dlldownloader.bat
+exit
+
+:PORTABLEEVERYTHING
+cls
+if not exist .\bin\wget.exe call :DOWNLOADWGET
+if not exist launch_everything.bat .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/EverythingPortable/master/launch_everything.bat
+start launch_everything.bat
 exit
 
 :ERROROFFLINE
