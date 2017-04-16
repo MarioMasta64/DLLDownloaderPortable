@@ -6,6 +6,7 @@ title PORTABLE DLLDOWNLOADER LAUNCHER
 set nag=BE SURE TO TURN CAPS LOCK OFF! (never said it was on just make sure)
 set new_version=OFFLINE
 if exist replacer.bat del replacer.bat
+if "%~1" neq "" (call :%~1 & exit /b !current_version!)
 
 :FOLDERCHECK
 cls
@@ -15,9 +16,11 @@ if not exist .\doc\ mkdir .\doc\
 
 :VERSION
 cls
-echo 4 > .\doc\version.txt
+echo 5 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
+call :VERSION
+goto CREDITS
 
 :CREDITS
 cls
