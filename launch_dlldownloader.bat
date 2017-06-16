@@ -10,12 +10,13 @@ if exist replacer.bat del replacer.bat
 :FOLDERCHECK
 cls
 if not exist .\bin\ mkdir .\bin\
-if not exist .\dll\ mkdir .\dll\
+if not exist .\dll\32\ mkdir .\dll\32\
+if not exist .\dll\64\ mkdir .\dll\64\
 if not exist .\doc\ mkdir .\doc\
 
 :VERSION
 cls
-echo 5 > .\doc\version.txt
+echo 7 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
 
@@ -126,11 +127,17 @@ goto MENU
 
 :GET_DLLS
 set Counter=0
-for /f "DELIMS=" %%i in ('type dll.txt') do (
-	if not exist %%i .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/%%i
-    if exist %%i move %%i .\dll\%%i
+for /f "DELIMS=" %%i in ('type dll32.txt') do (
+	if not exist %%i .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/32/%%i
+    if exist %%i move %%i .\dll\32\%%i
 )
-if exist dll.txt del dll.txt
+if exist dll32.txt del dll32.txt
+set Counter=0
+for /f "DELIMS=" %%i in ('type dll64.txt') do (
+	if not exist %%i .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/64/%%i
+    if exist %%i move %%i .\dll\64\%%i
+)
+if exist dll64.txt del dll64.txt
 exit /b
 
 :NULL
@@ -172,7 +179,7 @@ if not exist .\bin\wget.exe call :DOWNLOADWGET
 .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/version.txt
 set /p new_version=<.\version.txt
 if exist version.txt del version.txt
-if %new_version%==OFFLINE goto ERROROFFLINE
+if "%new_version%"=="OFFLINE" goto ERROROFFLINE
 if %current_version% EQU %new_version% goto LATEST
 if %current_version% LSS %new_version% goto NEWUPDATE
 if %current_version% GTR %new_version% goto NEWEST
