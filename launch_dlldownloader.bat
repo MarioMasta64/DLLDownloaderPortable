@@ -9,14 +9,13 @@ if exist replacer.bat del replacer.bat
 
 :FOLDERCHECK
 cls
-if not exist .\bin\ mkdir .\bin\
 if not exist .\dll\32\ mkdir .\dll\32\
 if not exist .\dll\64\ mkdir .\dll\64\
 if not exist .\doc\ mkdir .\doc\
 
 :VERSION
 cls
-echo 7 > .\doc\version.txt
+echo 8 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
 
@@ -158,8 +157,10 @@ goto MENU
 cls
 if exist dll.txt del dll.txt
 if not exist .\bin\wget.exe call :DOWNLOADWGET
-.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll.txt
-if not exist dll.txt goto ERROROFFLINE
+.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll32.txt
+if not exist dll32.txt goto ERROROFFLINE
+.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll64.txt
+if not exist dll64.txt goto ERROROFFLINE
 call :GET_DLLS
 exit /b
 
