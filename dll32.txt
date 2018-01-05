@@ -1,3 +1,16 @@
 D3DX9_43.dll 
 msvcp140.dll 
 vcruntime140.dll 
+msvcp60.dll 
+msvcr110.dll 
+msvcp110.dll 
+mfc110.dll 
+mfc110u.dll 
+mfcm110.dll 
+mfcm110u.dll 
+msvcr120.dll 
+msvcp120.dll 
+mfc120.dll 
+mfc120u.dll 
+mfcm120.dll 
+mfcm120u.dll 
