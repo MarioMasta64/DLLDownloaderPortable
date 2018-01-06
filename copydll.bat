@@ -1,7 +1,7 @@
 @echo off
 cls
 Color 0A
-title VCRedist DLL Grabber - By MarioMasta64
+title VCRedist ^& DirectX DLL Grabber - By MarioMasta64
 
 if not exist dll mkdir dll
 if not exist dll\32\ mkdir dll\32\
@@ -28,5 +28,18 @@ copy %WINDIR%\syswow64\mfcm%version%u.dll .\dll\64\
 
 set /a version+=10
 if %version% LSS 140 goto loopget
+
+:: cls
+:: echo WARNING FLASHING INCOMING, DO NOT CONTINUE IF YOU EXPERIENCE SEIZURES
+:: pause
+
+:: FOR /F %%A IN ('dir /b C:\_CommonRedist\DirectX\Jun2010\*x86.cab') DO (extrac32.exe %%A /L "%CD%\dll\32\")
+:: FOR /F %%A IN ('dir /b C:\_CommonRedist\DirectX\Jun2010\*x64.cab') DO (extrac32.exe %%A /L "%CD%\dll\64\")
+
+FOR /F %%A IN ('dir /b C:\_CommonRedist\DirectX\Jun2010\*x86.cab') DO (expand -f:*.dll C:\_CommonRedist\DirectX\Jun2010\%%A .\dll\32\)
+FOR /F %%A IN ('dir /b C:\_CommonRedist\DirectX\Jun2010\*x64.cab') DO (expand -f:*.dll C:\_CommonRedist\DirectX\Jun2010\%%A .\dll\64\)
+
+del .\dll\32\microsoft.directx.*dll
+del .\dll\64\microsoft.directx.*dll
 
 pause
