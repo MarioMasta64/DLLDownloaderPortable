@@ -1,3 +1,6 @@
+D3DX9_43.dll 
+msvcp140.dll 
+vcruntime140.dll 
 mfc40.dll 
 mfc40u.dll 
 msvcp60.dll 
@@ -11,3 +14,11 @@ msvcr110.dll
 msvcp110.dll 
 msvcr120.dll 
 msvcp120.dll 
+d3dx9_33.dll 
+xinput1_3.dll 
+dxupdate.dll 
+X3DAudio1_7.dll 
+xactengine3_6.dll 
+XAudio2_6.dll 
+XAPOFX1_4.dll 
+d3dx9_41.dll 
