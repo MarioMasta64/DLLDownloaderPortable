@@ -1,7 +1,7 @@
 @echo off
 cls
 Color 0A
-title VCRedist ^& DirectX DLL Grabber - By MarioMasta64
+title VCRedist ^& DirectX ^& XNA DLL Grabber - By MarioMasta64
 
 if not exist dll mkdir dll
 if not exist dll\32\ mkdir dll\32\
@@ -41,5 +41,7 @@ FOR /F %%A IN ('dir /b C:\_CommonRedist\DirectX\Jun2010\*x64.cab') DO (expand -f
 
 del .\dll\32\microsoft.directx.*dll
 del .\dll\64\microsoft.directx.*dll
+
+FOR /F %%A IN ('dir /b "C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\Redist\DX Redist\*.cab"') DO (expand -f:*.dll "C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\Redist\DX Redist\%%A" .\dll\32\)
 
 pause
