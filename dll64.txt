@@ -64,6 +64,10 @@ msvcp100.dll
 msvcp110.dll 
 msvcp120.dll 
 msvcp140.dll 
+msvcp140_1.dll 
+msvcp140_2.dll 
+msvcp140_atomic_wait.dll 
+msvcp140_codecvt_ids.dll 
 msvcr100.dll 
 msvcr110.dll 
 msvcr120.dll 
@@ -73,6 +77,7 @@ vccorlib120.dll
 vccorlib140.dll 
 vcomp140.dll 
 vcruntime140.dll 
+vcruntime140_1.dll 
 x3daudio1_0.dll 
 x3daudio1_1.dll 
 x3daudio1_2.dll 

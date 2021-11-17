@@ -73,6 +73,10 @@ msvcp100.dll
 msvcp110.dll 
 msvcp120.dll 
 msvcp140.dll 
+msvcp140_1.dll 
+msvcp140_2.dll 
+msvcp140_atomic_wait.dll 
+msvcp140_codecvt_ids.dll 
 msvcr100.dll 
 msvcr110.dll 
 msvcr120.dll 
