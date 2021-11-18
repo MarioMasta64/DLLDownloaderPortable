@@ -38,6 +38,7 @@ mfcm110u.dll
 mfcm120.dll 
 mfcm120u.dll 
 msdia100.dll 
+msdia90.dll 
 msvcp110.dll 
 msvcp140_1.dll 
 msvcp140_2.dll 
