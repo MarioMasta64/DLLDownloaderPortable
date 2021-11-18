@@ -1,4 +1,14 @@
 atl110.dll 
+mfc100chs.dll 
+mfc100cht.dll 
+mfc100deu.dll 
+mfc100enu.dll 
+mfc100esn.dll 
+mfc100fra.dll 
+mfc100ita.dll 
+mfc100jpn.dll 
+mfc100kor.dll 
+mfc100rus.dll 
 mfc110.dll 
 mfc110chs.dll 
 mfc110cht.dll 
@@ -27,6 +37,7 @@ mfcm110.dll
 mfcm110u.dll 
 mfcm120.dll 
 mfcm120u.dll 
+msdia100.dll 
 msvcp110.dll 
 msvcp140_1.dll 
 msvcp140_2.dll 
@@ -37,6 +48,7 @@ vcamp110.dll
 vcamp120.dll 
 vcamp140.dll 
 vccorlib110.dll 
+vcomp100.dll 
 vcomp110.dll 
 vcomp120.dll 
 vcomp140.dll 
