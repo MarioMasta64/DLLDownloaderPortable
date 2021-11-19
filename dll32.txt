@@ -1,11 +1,11 @@
-# Microsoft Visual C++ Redist 2015-2022
+# Microsoft Visual C++ Redist 2015-2022 x86
 msvcp140_1.dll
 msvcp140_2.dll
 msvcp140_atomic_wait.dll
 msvcp140_codecvt_ids.dll
 vcamp140.dll
 vcomp140.dll
-# Microsoft Visual C++ Redist 2013
+# Microsoft Visual C++ Redist 2013 x86
 mfc120.dll
 mfc120chs.dll
 mfc120cht.dll
@@ -22,7 +22,7 @@ mfcm120.dll
 mfcm120u.dll
 vcamp120.dll
 vcomp120.dll
-# Microsoft Visual C++ Redist 2012
+# Microsoft Visual C++ Redist 2012 x86
 ati110.dll
 mfc110.dll
 mfc110chs.dll
@@ -43,7 +43,7 @@ msvcr110.dll
 vcamp110.dll
 vccorlib110.dll
 vcomp110.dll
-# Microsoft Visual C++ Redist 2010
+# Microsoft Visual C++ Redist 2010 x86
 mfc100chs.dll
 mfc100cht.dll
 mfc100deu.dll
@@ -56,11 +56,11 @@ mfc100kor.dll
 mfc100rus.dll
 msdia100.dll
 vcomp100.dll
-# Microsoft Visual C++ Redist 2008
+# Microsoft Visual C++ Redist 2008 x86
 msdia90.dll
-# Microsoft Visual C++ Redist 2005
+# Microsoft Visual C++ Redist 2005 x86
 msdia80.dll
-# Microsoft DirectX June 2010
+# Microsoft DirectX June 2010 x86
 D3DCompiler_37.dll
 D3DCompiler_38.dll
 D3DCompiler_39.dll
