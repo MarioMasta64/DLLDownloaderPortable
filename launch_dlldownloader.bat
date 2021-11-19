@@ -15,7 +15,7 @@ if not exist .\doc\ mkdir .\doc\
 
 :VERSION
 cls
-echo 9 > .\doc\version.txt
+echo 10 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
 
@@ -24,8 +24,7 @@ cls
 if exist .\doc\dlldownloader_license.txt goto MENU
 echo ================================================== > .\doc\dlldownloader_license.txt
 echo =              Script by MarioMasta64            = >> .\doc\dlldownloader_license.txt
-:: remove space when version reaches 2 digits
-echo =           Script Version: v%current_version%- release         = >> .\doc\dlldownloader_license.txt
+echo =           Script Version: v%current_version% - release       = >> .\doc\dlldownloader_license.txt
 echo ================================================== >> .\doc\dlldownloader_license.txt
 echo =You may Modify this WITH consent of the original= >> .\doc\dlldownloader_license.txt
 echo = creator, as long as you include a copy of this = >> .\doc\dlldownloader_license.txt
@@ -128,13 +127,14 @@ goto MENU
 set Counter=0
 for /f "DELIMS=" %%i in ('type dll32.txt') do (
     set "dll=%%i"
+    if "!dll:~-1,1!" EQU " " set "dll=!dll:~0,-1!"
     if "!dll:~0,1!" EQU "#" (
         cls
         set "Software=!dll:~2!"
     )
     if "!dll:~0,1!" NEQ "#" (
         title PORTABLE DLLDOWNLOADER LAUNCHER - DOWNLOADING !Software! - !dll!
-	    if not exist ".\dll\32\!dll!" .\bin\wget.exe -q --show-progress https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/32/!dll!
+	    if not exist ".\dll\32\!dll!" .\bin\wget.exe -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/32/!dll!"
     )
     if exist "!dll!" move "!dll!" ".\dll\32\!dll!" >nul
 )
@@ -142,13 +142,14 @@ if exist dll32.txt del dll32.txt
 set Counter=0
 for /f "DELIMS=" %%i in ('type dll64.txt') do (
     set "dll=%%i"
+    if "!dll:~-1,1!" EQU " " set "dll=!dll:~0,-1!"
     if "!dll:~0,1!" EQU "#" (
         cls
         set "Software=!dll:~2!"
     )
     if "!dll:~0,1!" NEQ "#" (
         title PORTABLE DLLDOWNLOADER LAUNCHER - DOWNLOADING !Software! - !dll!
-	    if not exist ".\dll\64\!dll!" .\bin\wget.exe -q --show-progress https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/64/!dll!
+	    if not exist ".\dll\64\!dll!" .\bin\wget.exe -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/64/!dll!"
     )
     if exist "!dll!" move "!dll!" ".\dll\64\!dll!" >nul
 )
