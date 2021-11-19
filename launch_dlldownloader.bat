@@ -15,7 +15,7 @@ if not exist .\doc\ mkdir .\doc\
 
 :VERSION
 cls
-echo 8 > .\doc\version.txt
+echo 9 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
 
@@ -43,7 +43,7 @@ pause
 
 :WGETUPDATE
 cls
-wget https://eternallybored.org/misc/wget/current/wget.exe
+wget  -q --show-progress "https://eternallybored.org/misc/wget/current/wget.exe"
 move wget.exe .\bin\
 goto MENU
 
@@ -127,14 +127,30 @@ goto MENU
 :GET_DLLS
 set Counter=0
 for /f "DELIMS=" %%i in ('type dll32.txt') do (
-	if not exist %%i .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/32/%%i
-    if exist %%i move %%i .\dll\32\%%i
+    set "dll=%%i"
+    if "!dll:~0,1!" EQU "#" (
+        cls
+        set "Software=!dll:~2!"
+    )
+    if "!dll:~0,1!" NEQ "#" (
+        title PORTABLE DLLDOWNLOADER LAUNCHER - DOWNLOADING !Software! - !dll!
+	    if not exist ".\dll\32\!dll!" .\bin\wget.exe -q --show-progress https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/32/!dll!
+    )
+    if exist "!dll!" move "!dll!" ".\dll\32\!dll!" >nul
 )
 if exist dll32.txt del dll32.txt
 set Counter=0
 for /f "DELIMS=" %%i in ('type dll64.txt') do (
-	if not exist %%i .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/64/%%i
-    if exist %%i move %%i .\dll\64\%%i
+    set "dll=%%i"
+    if "!dll:~0,1!" EQU "#" (
+        cls
+        set "Software=!dll:~2!"
+    )
+    if "!dll:~0,1!" NEQ "#" (
+        title PORTABLE DLLDOWNLOADER LAUNCHER - DOWNLOADING !Software! - !dll!
+	    if not exist ".\dll\64\!dll!" .\bin\wget.exe -q --show-progress https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll/64/!dll!
+    )
+    if exist "!dll!" move "!dll!" ".\dll\64\!dll!" >nul
 )
 if exist dll64.txt del dll64.txt
 exit /b
@@ -156,10 +172,12 @@ goto MENU
 :DOWNLOADDLL
 cls
 if exist dll.txt del dll.txt
+if exist dll32.txt del dll32.txt
+if exist dll64.txt del dll64.txt
 if not exist .\bin\wget.exe call :DOWNLOADWGET
-.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll32.txt
+.\bin\wget.exe  -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll32.txt"
 if not exist dll32.txt goto ERROROFFLINE
-.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll64.txt
+.\bin\wget.exe  -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/dll64.txt"
 if not exist dll64.txt goto ERROROFFLINE
 call :GET_DLLS
 exit /b
@@ -177,7 +195,7 @@ goto MENU
 cls
 if exist version.txt del version.txt
 if not exist .\bin\wget.exe call :DOWNLOADWGET
-.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/version.txt
+.\bin\wget.exe  -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/version.txt"
 set /p new_version=<.\version.txt
 if exist version.txt del version.txt
 if "%new_version%"=="OFFLINE" goto ERROROFFLINE
@@ -214,7 +232,7 @@ goto NEWUPDATE
 :UPDATE
 cls
 if not exist .\bin\wget.exe call :DOWNLOADWGET
-.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/launch_dlldownloader.bat
+.\bin\wget.exe  -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/DLLDownloaderPortable/master/launch_dlldownloader.bat"
 if exist launch_dlldownloader.bat.1 goto REPLACERCREATE
 goto ERROROFFLINE
 
@@ -248,7 +266,7 @@ exit
 :PORTABLEEVERYTHING
 cls
 if not exist .\bin\wget.exe call :DOWNLOADWGET
-if not exist launch_everything.bat .\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/EverythingPortable/master/launch_everything.bat
+if not exist launch_everything.bat .\bin\wget.exe  -q --show-progress "https://raw.githubusercontent.com/MarioMasta64/EverythingPortable/master/launch_everything.bat"
 start launch_everything.bat
 exit
 
