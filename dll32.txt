@@ -5,6 +5,27 @@ msvcp140_atomic_wait.dll
 msvcp140_codecvt_ids.dll
 vcamp140.dll
 vcomp140.dll
+# Microsoft Visual C++ Redist 2015 x86
+concrt140.dll
+mfc140.dll
+mfc140chs.dll
+mfc140cht.dll
+mfc140deu.dll
+mfc140enu.dll
+mfc140esn.dll
+mfc140fra.dll
+mfc140ita.dll
+mfc140jpn.dll
+mfc140kor.dll
+mfc140rus.dll
+mfc140u.dll
+mfcm140.dll
+mfcm140u.dll
+msvcp140.dll
+vcamp140.dll
+vccorlib140.dll
+vcomp140.dll
+vcruntime140.dll
 # Microsoft Visual C++ Redist 2013 x86
 mfc120.dll
 mfc120chs.dll
