@@ -15,7 +15,7 @@ if not exist .\doc\ mkdir .\doc\
 
 :VERSION
 cls
-echo 10 > .\doc\version.txt
+echo 11 > .\doc\version.txt
 set /p current_version=<.\doc\version.txt
 if exist .\doc\version.txt del .\doc\version.txt
 
